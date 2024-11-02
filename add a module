@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+struct module {
+
+ char name;
+ int cof;
+ struct  module *suivant;
+
+};
+
+int main(){
+struct module *tete=NULL;
+
+tete=malloc(sizeof (struct module));
+
+struct module *ptr=tete;
+
+
+char reponse;
+
+do{
+        printf("donner le module :");
+        scanf("%s",&ptr->name);
+
+        printf("donner le coeffesant de module :");
+        scanf("%d",&ptr->cof);
+
+        printf("do you add a new module :");
+        scanf("%s",&reponse);
+        if(reponse=='Y'|| reponse=='y'){
+
+
+
+             ptr->suivant=malloc(sizeof (struct module));
+
+             ptr=ptr->suivant;
+
+        }
+
+        else
+
+             ptr->suivant=NULL;
+}
+while(reponse=='Y' || reponse=='y');
+
+
+
+
+return 0;
+}
