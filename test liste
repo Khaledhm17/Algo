@@ -1,0 +1,154 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+struct module {
+
+ char name[30];
+ int cof;
+ struct  module *suivant;
+
+};
+
+
+  void afficher(struct module *tete){
+
+   struct module *ptr;
+
+   ptr=tete;
+
+
+    if (ptr == NULL) {
+        printf("La liste est vide.\n");
+
+    }
+
+    else {
+   printf("------------la liste est:--------------");
+
+   printf("\n \n \n");
+
+while(ptr!=NULL){
+
+    printf(" le nom module:");
+    printf("%s",ptr->name);
+
+    printf("\n ");
+
+    printf(" le coffecent de  module:");
+   printf("%d",ptr->cof);
+
+   ptr=ptr->suivant;
+
+     printf("\n \n \n");
+
+
+}
+
+    }
+
+   }
+
+//ajouter milieu de lise
+
+  *ajouterMilieu(struct module *tete,char reponse[]){
+
+
+struct module *ptr=tete;
+
+if(tete==NULL){
+        printf("no regester le module");}
+else
+{
+
+
+
+while(ptr!=NULL){
+
+if(reponse==ptr->name){
+
+
+
+    struct module *newModule=malloc(sizeof (struct module));
+
+    printf("donner le nom module:");
+    scanf("%s",newModule->name);
+
+    printf("donner le coofecent de module:");
+    scanf("%d",newModule->cof);
+
+
+    newModule->suivant = ptr->suivant;
+    ptr->suivant = newModule;
+
+return tete;
+
+}
+else
+    ptr= ptr->suivant;
+}
+}}
+
+// -ajouter une module on fin de liste-
+
+  ajouterFIN(struct module *tete){
+
+
+
+    struct module *newModule=malloc(sizeof (struct module));
+
+
+    printf("donner le nom module:");
+    scanf("%s",&newModule->name);
+
+    printf("donner le coffecent de  module:");
+    scanf("%d",&newModule->cof);
+
+    newModule->suivant=NULL;
+
+
+
+
+
+
+
+    if(tete==NULL){
+        tete=newModule;}
+
+        else{
+
+            struct module*ptr;
+            ptr=tete;
+
+        while(ptr->suivant!=NULL){
+
+    ptr=ptr->suivant;
+    }
+
+    ptr->suivant=newModule;
+        }
+return tete;
+ }
+
+
+int main(){
+
+ struct module *tete=NULL;
+
+  afficher(tete);
+
+ tete=ajouterFIN(tete);
+  tete=ajouterFIN(tete);
+   tete=ajouterFIN(tete);
+   //tete=ajouterMilieu;
+
+ afficher(tete);
+
+
+  return 0;
+
+}
+
+
