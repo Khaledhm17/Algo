@@ -1,0 +1,205 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
+
+ typedef struct {
+
+ char name[30];
+ int moyene;
+ struct liste *suivant;
+
+}liste;
+
+liste*chargerliste(liste *tete){
+
+tete=NULL;
+
+tete=malloc(sizeof (liste));
+liste *ptr=tete;
+
+
+char reponse;
+
+do{
+
+        printf("\n");
+        printf("donner le nom de etudeant:");
+        scanf("%s",&ptr->name);
+
+
+        printf("\n");
+
+
+        printf("donner le moyene :");
+        scanf("%d",&ptr->moyene);
+
+        printf("do you add a new etudeant :");
+        scanf("%s",&reponse);
+
+        printf("\n");
+
+        if(reponse=='Y'|| reponse=='y'){
+
+
+            liste *newModule=malloc(sizeof (liste));
+
+            if (tete == NULL) {
+
+            tete = newModule;
+
+          }
+
+
+            ptr->suivant=newModule;
+            ptr=ptr->suivant;
+
+        }
+
+        else
+
+             ptr->suivant=NULL;
+}
+while(reponse=='Y' || reponse=='y');
+
+
+
+
+return tete;
+}
+
+
+
+ liste *chercher(liste *tete , char etudeant[30]){
+
+
+   //tete=NULL;
+
+   liste *ptr=tete;
+
+   printf("\n");
+
+
+
+  while(ptr!=NULL){
+if (strcmp(etudeant, ptr->name) == 0)
+{
+
+
+        printf("le moyene :%d",ptr->moyene);
+
+        return ptr;
+
+    }
+       ptr=ptr->suivant;
+
+  }
+  printf("etudeant n'exist pas!");
+
+ return NULL;
+
+
+}
+
+ void afficher(liste *tete){
+
+
+if(tete==NULL)
+
+    printf("liste vide");
+else
+     printf("---------------les listes ------------");
+
+
+while(tete!=NULL){
+
+
+     printf("\n");
+     printf(" name:%s",tete->name);
+     printf("\n");
+     printf("moyene:%d",tete->moyene);
+
+     tete=tete->suivant;
+}
+
+
+}
+
+
+
+void major(liste *tete){
+
+
+if (tete == NULL) {
+    printf("liste vide \n");
+
+}
+
+
+liste *ptr=tete;
+
+int major;
+char major_name[30];
+
+   major=tete->moyene;
+
+   strcpy(major_name, tete->name);
+
+
+while(ptr!=NULL){
+
+
+    if(major <= ptr->moyene){
+
+
+    major=ptr->moyene;
+
+
+   strcpy(major_name, ptr->name);
+
+}
+
+  ptr=ptr->suivant;
+
+}
+
+ printf("le major est  %s et moyene  %d" ,major_name,major);
+
+
+}
+
+
+
+int main(){
+
+struct liste *tete=NULL;
+char etudeant[30];
+
+
+afficher(tete);
+tete=chargerliste(tete);
+afficher(tete);
+
+printf("\n");
+
+
+major(tete);
+
+printf("\n");
+
+printf("donner le etudeant recherche on liste ");
+
+printf("\n");
+
+   scanf("%s",&etudeant);
+tete=chercher(tete,etudeant);
+
+printf("\n");
+
+
+
+
+return 0;
+
+}
