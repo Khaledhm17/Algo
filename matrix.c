@@ -45,16 +45,17 @@ a=0;
                printf("\n");
 
 
-    // paire lignes
+    // impaire lignes
 
-     printf("les lignes paire :");
+     printf("les lignes impaire :");
 
     printf("\n");
+    printf("\n");
 
-      for (i = 0; i < 5; i++) {
+      for (i = 0; i < 5; i+=2) {
         for (j = 0; j < 5; j++) {
 
-                if(i%2==0)
+               // if(i%2==0)
           printf("%c\t",M[i][j]);
 
         }
@@ -63,16 +64,19 @@ a=0;
         }
 
 
-         // impaire lignes
+        printf("\n");
+        printf("\n");
+         // paire lignes
 
-     printf("les lignes impaire :");
+     printf("les lignes paire :");
 
     printf("\n");
+    printf("\n");
 
-      for (i = 0; i < 5; i++) {
+      for (i = 1; i < 4; i+=2) {
         for (j = 0; j < 5; j++) {
 
-                if(i%2==1)
+          //      if(i%2==1)
           printf("%c\t",M[i][j]);
 
         }
@@ -88,9 +92,47 @@ a=0;
    printf("\n");
 
 
+//colone impaire
+printf("le colone impaire ");
+
+    printf("\n");
+    printf("\n");
+
+   for (i = 0; i < 5; i++) {
+        for (j = 0; j < 5; j+=2) {
+
+          printf("%c\t",M[i][j]);
+
+        }
+        printf("\n");
+
+        }
+
+ printf("\n");
+   printf("\n");
+
+   //colone paire
+
+   printf("le colone paire ");
+
+
+    printf("\n");
+    printf("\n");
+
+   for (i = 0; i < 5; i++) {
+        for (j = 1; j < 4; j+=2) {
+
+          printf("%c\t",M[i][j]);
+
+        }
+        printf("\n");
+
+        }
 
 
 
+    printf("\n");
+   printf("\n");
     // change the matrix
     for (i = 0; i < 5; i++) {
         for (j = i + 1; j < 5; j++) {
