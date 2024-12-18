@@ -1,0 +1,166 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
+
+typedef struct element{
+
+ int val;
+ struct element *suivant;
+
+}element;
+
+element *creerliste(){
+
+return NULL;
+}
+
+
+
+// afficher le liste
+
+
+void afficherliste(element *tete){
+
+
+element *ptr=tete;
+
+while(ptr!=NULL){
+
+    printf("%d ->",ptr->val);
+
+     ptr=ptr->suivant;
+
+}
+
+printf("NULL \n");
+
+
+
+}
+
+//charger la liste
+
+
+        element *chargerliste(int tab[], int n ,element *liste){
+
+
+        liste=NULL;
+
+       element *tmp=NULL;
+
+       for(int i=n-1;i>=0;i--){
+
+             element *nouveau=malloc(sizeof(element));
+
+             nouveau->val=tab[i];
+             nouveau->suivant=NULL;
+
+    if(liste==NULL){
+
+
+      liste=nouveau;
+
+    }
+       else{
+        tmp->suivant=nouveau;
+       }
+       tmp=nouveau;
+       }
+
+
+
+        return liste;
+
+
+}
+
+// supprimer en fin liste
+
+
+element *supprimerenfin(element *liste){
+
+
+
+  element *ptr=liste;
+
+while(ptr->suivant->suivant!= NULL){
+
+
+
+   ptr= ptr->suivant;
+
+}
+
+    free(ptr->suivant);
+
+
+
+    ptr->suivant=NULL;
+
+
+    return liste;
+}
+
+//ajouter en debut
+
+element *ajouterendebut(element *liste,int a){
+
+element *tete=liste;
+
+element *nouveau=malloc(sizeof(element));
+
+nouveau->val=a;
+nouveau->suivant=tete;
+tete=nouveau;
+
+return tete;
+
+
+
+
+}
+
+
+viderliste(element  *L){
+
+element *tmp=L;
+
+while(L!=NULL){
+
+    L=L->suivant;
+
+    free(tmp);
+
+    tmp=L;
+
+
+}
+printf("la liste est vide!!!");
+
+}
+
+
+
+
+
+
+
+
+
+int main(){
+
+
+int tab[10]={1,3,5,7,8,10,9,11,13,20};
+element *liste=creerliste();
+element *L=chargerliste(tab,10,liste);
+afficherliste(L);
+element *L1=supprimerenfin(L);
+afficherliste(L1);
+element *L2=ajouterendebut(L1,40);
+afficherliste(L2);
+viderliste(L2);
+return 0;
+
+
+}
