@@ -136,6 +136,7 @@ while(L!=NULL){
 
 
 }
+if(L==NULL)
 printf("la liste est vide!!!");
 
 }
